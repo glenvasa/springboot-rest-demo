@@ -6,6 +6,8 @@ import com.glenvasa.springboot.rest.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 // Don't need @Transactional b/c Spring JPA internally makes all Repository methods transactional
 public class EmployeeServiceImpl implements EmployeeService {
@@ -21,6 +23,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
     }
 
 }
