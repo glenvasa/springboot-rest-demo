@@ -30,4 +30,16 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>> getAllEmployees(){
         return new ResponseEntity<List<Employee>>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
+
+    // build get employee by id REST API
+    // http://localhost:8080/api/employees/1
+    @GetMapping("{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id){
+        return new ResponseEntity<Employee>(employeeService.getEmployeeById(id), HttpStatus.OK);
+    }
+
+    // build update employee REST API
+
+
+
 }
