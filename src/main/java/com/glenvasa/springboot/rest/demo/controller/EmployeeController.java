@@ -4,10 +4,9 @@ import com.glenvasa.springboot.rest.demo.model.Employee;
 import com.glenvasa.springboot.rest.demo.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 // Combines @Controller and @ResponseBody, so we don't need to annotate every method w/@ResponseBody
 @RestController
@@ -26,4 +25,9 @@ public class EmployeeController {
         return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
+    // build get all employees REST API
+    @GetMapping
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        return new ResponseEntity<List<Employee>>(employeeService.getAllEmployees(), HttpStatus.OK);
+    }
 }
